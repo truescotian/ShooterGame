@@ -38,10 +38,8 @@ func _process(_delta):
 		var pos = $LaserStartPositions.get_children()[2].global_position
 		grenade.emit(pos, player_direction)
 
-
 func _on_timer_timeout():
 	can_laser = true
-
 
 func _on_grenade_reload_timer_timeout():
 	can_grenade = true
