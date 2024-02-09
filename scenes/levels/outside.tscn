@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c0mwdjhuc2d2v"]
+[gd_scene load_steps=20 format=3 uid="uid://c0mwdjhuc2d2v"]
 
 [ext_resource type="PackedScene" uid="uid://cy4bdv2oc8htf" path="res://scenes/levels/level.tscn" id="1_lmaam"]
 [ext_resource type="Script" path="res://scenes/levels/outside.gd" id="2_88o6m"]
@@ -16,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://bno8v1wk14afx" path="res://scenes/houses/house.tscn" id="11_4uoml"]
 [ext_resource type="PackedScene" uid="uid://cfrpuoykvxpup" path="res://scenes/objects/light_fan_animation.tscn" id="12_ldc4x"]
 [ext_resource type="PackedScene" uid="uid://dumcmpvxvhpbf" path="res://scenes/objects/steam_vent.tscn" id="13_qr2rw"]
-[ext_resource type="PackedScene" uid="uid://crpb7k41ylvqt" path="res://scenes/items/item.tscn" id="17_agom7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tp3lr"]
 resource_name = "walls"
@@ -55,6 +54,10 @@ sources/1 = SubResource("TileSetAtlasSource_y76yp")
 [node name="Outside" instance=ExtResource("1_lmaam")]
 script = ExtResource("2_88o6m")
 inside_level_scene = ExtResource("3_dorkr")
+
+[node name="Gate" parent="." index="1" instance=ExtResource("2_gkmib")]
+z_index = 1
+position = Vector2(22, -6)
 
 [node name="Soil" type="Sprite2D" parent="Ground" index="0"]
 texture_repeat = 2
@@ -110,14 +113,11 @@ position = Vector2(-2184, 1330)
 scale = Vector2(2, 2)
 frame_progress = 0.188471
 
-[node name="Gate" parent="." index="1" instance=ExtResource("2_gkmib")]
-position = Vector2(22, -6)
-
-[node name="Player" parent="." index="3"]
+[node name="Player" parent="." index="5"]
+z_index = 2
 position = Vector2(671, 403)
 metadata/_edit_group_ = true
 
-[node name="Item" parent="." index="6" instance=ExtResource("17_agom7")]
-position = Vector2(1085, 469)
-
 [connection signal="player_entered_gate" from="Gate" to="." method="_on_gate_player_entered_gate"]
+[connection signal="player_entered" from="Ground/House" to="." method="_on_house_player_entered"]
+[connection signal="player_exited" from="Ground/House" to="." method="_on_house_player_exited"]
