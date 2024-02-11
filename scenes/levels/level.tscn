@@ -11,6 +11,8 @@ script = ExtResource("1_aasbs")
 
 [node name="Ground" type="Node2D" parent="."]
 
+[node name="Infestation" type="Node2D" parent="."]
+
 [node name="Items" type="Node2D" parent="."]
 
 [node name="Projectiles" type="Node2D" parent="."]
@@ -26,6 +28,8 @@ position_smoothing_enabled = true
 [node name="Lights" type="Node2D" parent="."]
 
 [node name="UI" parent="." instance=ExtResource("3_5o15r")]
+
+[node name="Enemies" type="Node2D" parent="."]
 
 [connection signal="grenade" from="Player" to="." method="_on_player_grenade"]
 [connection signal="laser" from="Player" to="." method="_on_player_laser"]
